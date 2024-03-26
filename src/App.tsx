@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Scoring from "./views/Scoring";
+import Thanks from "./views/Thanks";
+
+type Scoring = "scoring" | "thanks";
 
 function App() {
+  const [score, setScore] = useState(0);
+  const [view, setView] = useState<Scoring>("scoring");
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
+
+  const saveScore = (currentScore: number) => {
+    setScore(currentScore);
+    setView("thanks");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {view === "scoring" && <Scoring saveScore={saveScore} selectedNumber={selectedNumber} setSelectedNumber={setSelectedNumber} />}
+      {view === "thanks" && <Thanks score={score} />}
     </div>
   );
 }
