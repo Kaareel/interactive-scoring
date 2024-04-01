@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        iconColor:'hsla(217deg, 12%, 63%, 0.075)', cardColor1:'#222933', cardColor2:'#161e29'
+        iconColor:'hsla(217deg, 12%, 63%, 0.075)', cardColor1:'#222933', cardColor2:'#161e29', buttonBase:'hsla(217deg, 12%, 63%, 0.109)'
       }
     },
   },
